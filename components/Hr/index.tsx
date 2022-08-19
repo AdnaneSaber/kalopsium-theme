@@ -1,6 +1,6 @@
 import React from "react";
 
-const Hr = ({ content }: { content?: string }) => {
+const Hr: React.FC<{ content?: string }> = ({ content }) => {
   return (
     <div className="relative flex py-5 items-center">
       <div className="flex-grow border-t border-gray-400" />

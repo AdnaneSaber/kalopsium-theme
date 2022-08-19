@@ -1,6 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 html,
 body {
   padding: 0;
@@ -18,15 +15,132 @@ a {
   box-sizing: border-box;
 }
 
-/* @media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+.fdSelect#dossierSwitcher {
+  text-transform: uppercase;
+  height: 100%;
+}
+
+@media screen and (max-width: 992px) {
+  .fdSelect#dossierSwitcher {
+    min-width: 100%;
   }
-  body {
-    color: white;
-    background: black;
+}
+
+.fdSelect.active {
+  -webkit-box-shadow: 0 0 8px #f2f2f250;
+  box-shadow: 0 0 8px #f2f2f250;
+}
+
+.fdSelect.active i {
+  -webkit-transform: rotateX(180deg);
+  transform: rotateX(180deg);
+}
+
+.fdSelect.active.top #fdSelect_Options {
+  bottom: 120%;
+  top: auto;
+}
+
+.fdSelect.active #fdSelect_Options {
+  top: 120%;
+  opacity: 1;
+  font-weight: 300;
+  visibility: visible;
+  z-index: 10;
+}
+
+.fdSelect > span {
+  -webkit-transition: color 0.4s;
+  transition: color 0.4s;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.fdSelect.top #fdSelect_Options {
+  bottom: 100%;
+  top: auto;
+}
+
+.fdSelect #fdSelect_Options {
+  /* background-color: #ffffff; */
+  position: absolute;
+  top: 150%;
+  visibility: hidden;
+  opacity: 0;
+  font-size: 0.8rem;
+  width: 100%;
+  left: 0;
+  border-radius: 5px;
+  padding: 0.2em;
+  border: 1px solid #7d7d7d50;
+  -webkit-box-shadow: 0 0 8px #7d7d7d50;
+  box-shadow: 0 0 8px #7d7d7d50;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-transition: opacity 0.4s, visibility 0.4s, top 0.4s, bottom 0.4s;
+  transition: opacity 0.4s, visibility 0.4s, top 0.4s, bottom 0.4s;
+  font-weight: 300;
+}
+
+.fdSelect #fdSelect_Options .fdSelect_Options_Option {
+  height: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 0.2em 0.5em;
+  font-weight: 300;
+  font-size: 14px;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .scrollbar::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
   }
-} */
+
+  .scrollbar::-webkit-scrollbar-thumb {
+    transition: 0.4s;
+  }
+  .scrollbar:hover::-webkit-scrollbar-thumb {
+    background: #d1d5db;
+    border: 1px solid #d1d5db;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #d1d5db;
+  }
+  .flow-left::before {
+    content: '';
+    width: 25px;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: linear-gradient(90deg, #6c6c6cc7, transparent);
+  }
+  .flow-right::after {
+    content: '';
+    width: 25px;
+    height: 100%;
+    position: fixed;
+    right: 0;
+    top: 0;
+    background: linear-gradient(270deg, #6c6c6cc7, transparent);
+  }
+}
+
 *{
   transition: .4s;
 }

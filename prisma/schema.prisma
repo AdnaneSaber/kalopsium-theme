@@ -62,23 +62,34 @@ model User {
 
 // Prisma model of a product
 model Product {
-  id         Int      @id @default(autoincrement())
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
-  name       String   @db.VarChar(255)
-  price      Int
-  stock      Int
-  category   Category @relation(fields: [categoryId], references: [id])
-  categoryId Int      @unique
-  userId     String   @unique
-  author     User     @relation(fields: [userId], references: [id])
+  id             Int           @id @default(autoincrement())
+  priceId        String        @unique
+  created        DateTime      @default(now())
+  updated        DateTime      @updatedAt
+  name           String        @db.VarChar(255)
+  image          String        @db.VarChar(255)
+  price          Int
+  stock          Int
+  category       Category      @relation(fields: [categoryId], references: [id])
+  categoryId     Int           @unique
+  userId         String        @unique
+  author         User          @relation(fields: [userId], references: [id])
+  ProductImage   ProductImage? @relation(fields: [productImageId], references: [id])
+  productImageId Int?
+}
+
+model ProductImage {
+  id        Int       @id @default(autoincrement())
+  productId Int       @unique
+  image     String    @db.VarChar(255)
+  product   Product[]
 }
 
 // Prisma model of a category
 model Category {
   id         Int       @id @default(autoincrement())
-  createdAt  DateTime  @default(now())
-  updatedAt  DateTime  @updatedAt
+  created    DateTime  @default(now())
+  updated    DateTime  @updatedAt
   name       String    @db.VarChar(255)
   products   Product[]
   categoryId Int

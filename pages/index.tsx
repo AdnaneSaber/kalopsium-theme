@@ -6,6 +6,8 @@ import { Prisma } from "@prisma/client";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Link from "next/link";
+import Landing from "components/Landing";
+import { PillShow, Sidebar, Products } from "components";
 
 const Home: NextPage = () => {
   const [user, setUser] = useState<Prisma.UserCreateInput>();
@@ -24,10 +26,19 @@ const Home: NextPage = () => {
         <title>Welcome to Kalopsium Shop</title>
       </Head>
       {/*  */}
-      <section className="lg:container">
-        
+      <Landing />
+      <PillShow />
+      <section className="flex">
+        <div
+          id="sideFilter"
+          className="p-5 max-w-xs w-full border-r dark:border-gray-700 hidden md:block"
+        >
+          <Sidebar />
+        </div>
+        <div className="p-5 w-full flex justify-center">
+          <Products />
+        </div>
       </section>
-
     </>
   );
 };
